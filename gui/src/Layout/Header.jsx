@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Header = () => {
   const [isloggedIn, setisloggedIn] = useState(false);
@@ -6,6 +6,27 @@ const Header = () => {
   const handleLogin = () => {
     setisloggedIn(!isloggedIn)
   }
+
+
+  // componentDidMount + componentDidUpdate
+  useEffect(() => {
+    console.log("Header Component mounted or updated");
+  });
+
+  // componentDidMount only
+  useEffect(() => {
+    console.log("Header Component mounted");
+  }, [isloggedIn]);
+
+  const navEntry = performance.getEntriesByType("navigation")[0];
+  // componentWillUnmount
+  useEffect(() => {
+    if (navEntry.type === "reload" || navEntry.type === "back_forward") {
+      return () => {
+        alert("Header Component will unmount");
+      };
+    }
+  }, []);
 
   return (
     <div className="flex flex-row p-2 justify-between items-center ">

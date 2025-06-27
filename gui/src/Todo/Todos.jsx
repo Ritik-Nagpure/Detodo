@@ -9,8 +9,8 @@ const Todos = () => {
       <td>{todo.completed ? "Completed" : "Not Completed"}</td>
     </tr>
   ))
-  console.log(todos)
-  console.log(todoList)
+  // console.log(todos)
+  // console.log(todoList)
   return (
     <div>
       <table className="table-auto w-full">
