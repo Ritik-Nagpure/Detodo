@@ -1,45 +1,43 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const nav = useNavigate()
+  const load_app = (applink) => {
+    nav(applink)
+  }
   const [isloggedIn, setisloggedIn] = useState(false);
 
-  const handleLogin = () => {
-    setisloggedIn(!isloggedIn)
+  const handleSignout = () => {
+    setisloggedIn(false);
   }
 
-
-  // componentDidMount + componentDidUpdate
-  useEffect(() => {
-    console.log("Header Component mounted or updated");
-  });
-
-  // componentDidMount only
-  useEffect(() => {
-    console.log("Header Component mounted");
-  }, [isloggedIn]);
-
-  const navEntry = performance.getEntriesByType("navigation")[0];
-  // componentWillUnmount
-  useEffect(() => {
-    if (navEntry.type === "reload" || navEntry.type === "back_forward") {
-      return () => {
-        alert("Header Component will unmount");
-      };
+  const handleLogin = () => {
+    if (isloggedIn) {
+      load_app('/profile');
+    } else {
+      load_app('/login');
+      // setisloggedIn(true);
     }
-  }, []);
+    
+  }
 
   return (
     <div className="flex flex-row p-2 justify-between items-center ">
       <div className="">
 
       </div>
-      <div className="text-5xl font-bold text-blue-200">
+      <div className="text-5xl font-bold text-blue-200" onClick={() => load_app('/')}>
         Detodo
       </div>
       <div className="">
         <button className='bg-gray-600 rounded-xl p-2' onClick={handleLogin}>
-          {isloggedIn ? "Profile" : "Login"}
+          {isloggedIn ? "Profile" : "Sign in"}
         </button>
+
+        {isloggedIn ? <button className='bg-gray-600  ml-2 rounded-xl p-2' onClick={handleSignout}>
+          Sign out</button> : null}
+
       </div>
     </div>
   )

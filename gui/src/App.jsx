@@ -1,12 +1,10 @@
-import { useState } from 'react'
 import Layout from './Layout/Layout.jsx'
-
 
 const App = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col justify-between">
       <Layout />
-    </div>
+    </div >
   )
 }
 

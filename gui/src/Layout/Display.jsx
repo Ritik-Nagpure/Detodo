@@ -10,12 +10,11 @@ const display = () => {
     setAddtodo(!addtodo)
   }
 
-  const submitTodo = (todo) => { 
-    // Logic to submit the new todo
+  const submitTodo = (todo) => {
     console.log("New Todo Submitted:", todo);
-    setAddtodo(false); 
+    setAddtodo(false);
   }
-  
+
   return (
     <div>
       <br></br>
@@ -24,7 +23,7 @@ const display = () => {
       </p>
       <br></br>
       <Todos />
-        {addtodo ? <Newtodo /> : null  }
+      {addtodo ? <Newtodo /> : null}
       <br></br>
     </div>
   )

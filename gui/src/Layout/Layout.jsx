@@ -1,21 +1,29 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Footer from "./Footer"
 import Header from "./Header"
-import Display from "./display"
+import Display from "./Display"
+import Profile from "../Profile/Profile"
+import Login from "../Login/Login"
 
 const Layout = () => {
     return (
-        <div className="min-h-screen flex flex-col justify-between">
-            <header className="">
-                <Header />
-            </header>
-            <main className=" flex-grow">
-                <Display />
-            </main>
-            <footer className="">
-                <Footer />
-            </footer>
-
-        </div>
+        <>
+            <BrowserRouter>
+                <header className="">
+                    <Header />
+                </header>
+                <main className=" flex-grow">
+                    <Routes>
+                        <Route path="/" element={<Display />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/login" element={<Login />} />
+                    </Routes>
+                </main>
+                <footer className="">
+                    <Footer />
+                </footer>
+            </BrowserRouter>
+        </>
     )
 }
 
