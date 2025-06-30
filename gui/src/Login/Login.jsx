@@ -34,14 +34,20 @@ const Login = () => {
   const displayBox = () => {
     return (
       <>
-        <div className='bg-gray-600 rounded-4xl w-fit h-fit m-2 flex flex-col items-center justify-center p-8'>
-          <div className='flex flex-col items-center justify-center'>
+
+        <div className=' w-fit h-fit m-2 flex flex-col items-center justify-center p-8'>
+          <p className='text-xl'>Welcome !!</p>
+          <p>Please Sign In or Sign Up to Continue</p>
+        </div>
+
+        <div className='bg-indigo-950 rounded-4xl w-fit h-fit m-2 flex flex-col items-center justify-center p-8'>
+          <div className='flex flex-row items-center justify-center w-full'>
             <button
-              className='bg-blue-500 text-white px-4 py-2 rounded mt-4'
+              className='bg-indigo-600 text-white px-4 py-2 rounded-4xl m-2'
               onClick={handleSignState}
-            >
+            >&#xf135;
             </button>
-            <p className='text-3xl font-bold mb-4'>
+            <p className='text-3xl font-bold m-4'>
               {signState ? "Sign Up" : "Sign In"}
             </p>
           </div>
@@ -49,17 +55,15 @@ const Login = () => {
 
         </div>
 
-        <div className='bg-gray-600 rounded-4xl w-fit h-fit m-2 flex flex-col items-center justify-center p-8'>
-          <p className='text-xl'>Welcome !!
-            Please Sign In or Sign Up to Continue</p>
-        </div>
       </>
     )
   }
 
   return (
     <>
-      {displayBox()}
+      <div className='flex flex-col items-center justify-center mt-6'>
+        {displayBox()}
+      </div>
     </>
   )
 }
