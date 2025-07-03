@@ -22,7 +22,6 @@ app.get('/todo', (req: Request, res: Response) => {
 app.post('/todos', (req: Request, res: Response) => {
   const todo: string = req.body.todo;
   console.log(`Received todo: ${todo}`);
-  console.log(req)
   res.status(201).json({ message: `Todo "${todo}" created successfully!`});
 });
 
