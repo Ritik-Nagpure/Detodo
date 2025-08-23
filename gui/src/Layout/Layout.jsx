@@ -14,9 +14,9 @@ const Layout = () => {
                 </header>
                 <main className=" flex-grow">
                     <Routes>
-                        <Route path="/" element={<Display />} />
-                        <Route path="/profile" element={<Profile />} />
-                        <Route path="/login" element={<Login />} />
+                        <Route path="/Detodo/" element={<Display />} />
+                        <Route path="/Detodo/profile" element={<Profile />} />
+                        <Route path="/Detodo/login" element={<Login />} />
                     </Routes>
                 </main>
                 <footer className="">

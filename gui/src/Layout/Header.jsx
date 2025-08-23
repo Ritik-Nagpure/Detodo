@@ -10,16 +10,17 @@ const Header = () => {
 
   const handleSignout = () => {
     setisloggedIn(false);
+    load_app('/Detodo/login');
   }
 
   const handleLogin = () => {
     if (isloggedIn) {
-      load_app('/profile');
+      load_app('/Detodo/profile');
     } else {
-      load_app('/login');
+      load_app('/Detodo/login');
       // setisloggedIn(true);
     }
-    
+
   }
 
   return (
@@ -27,7 +28,7 @@ const Header = () => {
       <div className="">
 
       </div>
-      <div className="text-5xl font-bold text-blue-200" onClick={() => load_app('/')}>
+      <div className="text-5xl font-bold text-blue-200" onClick={() => load_app('/Detodo/')}>
         Detodo
       </div>
       <div className="">
