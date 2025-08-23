@@ -1,7 +1,7 @@
 
 export const data = []
 
-export const todos = [
+export const todos_fixed = [
     {
         id: 1,
         title: 'Learn React',
@@ -18,3 +18,15 @@ export const todos = [
         completed: false
     }
 ]
+
+
+export const todos = async () => {
+    try {
+        const res = await fetch('http://localhost:8000/api/todos');
+        if (!res.ok) throw new Error('Failed to fetch');
+        const data = await res.json();
+        return data;
+    } catch (err) {
+        console.error(err);
+    }
+};

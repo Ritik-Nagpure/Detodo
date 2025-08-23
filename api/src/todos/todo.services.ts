@@ -11,8 +11,8 @@ export const createTodoService = (todoModel: payloadTodo) => {
     let crt = async () => {
         await prisma.todo.create({
             data: {
-                title: 'Finish TypeScript guide',
-                status: 'in-progress'
+                title: todoModel.title,
+                status: todoModel.status
             }
         });
     };
@@ -28,11 +28,33 @@ export const updateTodoService = () => {
 
 }
 
-export const getTodoService = () => {
+export const getTodoService = async (todoid: number | undefined): Promise<payloadTodo | null> => {
+    const getData = await prisma.todo.findUnique({
+        select: {
+            id: true,
+            title: true,
+            status: true,
+            completed: true
+        },
+        where: { id: todoid },
+    });
 
+    return getData;
 }
 
-export const getTodoServiceList = () => {
 
+export const getTodoServiceList = async (): Promise<payloadTodo[] | null> => {
+    const allData = await prisma.todo.findMany(
+        {
+            select: {
+                id: true,
+                title: true,
+                status: true,
+                completed: true
+            }
+        }
+    );
+    console.log(allData)
+    return allData
 }
 

@@ -13,12 +13,10 @@ export interface servicesReturn {
 }
 
 export interface payloadTodo {
-    id?: number;
-    title?: string;
-    status?: string;
+    id?: number
+    title: string;
+    status: string;
     completed?: boolean;
-    createdAt?: Date;
-    updatedAt?: Date
 }
 
 export interface payloadUser {

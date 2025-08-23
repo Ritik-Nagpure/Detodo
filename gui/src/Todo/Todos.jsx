@@ -1,16 +1,24 @@
-import { todos } from "./Gettodo"
+import { todos, todos_fixed } from "./Gettodo"
+import { useEffect } from "react";
 
 const Todos = () => {
 
-  const todoList = todos.map(todo => (
-    <tr key={todo.id}>
-      <td>{todo.id}</td>
-      <td>{todo.title}</td>
-      <td>{todo.completed ? "Completed" : "Not Completed"}</td>
-    </tr>
-  ))
-  // console.log(todos)
-  // console.log(todoList)
+  useEffect(() => {
+    cruptodo();
+  }, []);
+
+  const cruptodo = async () => {
+    let todoslist = await todos();
+    const todoList = todoslist.map(todo => (
+      `<tr key=${todo.id}>
+        <td>${todo.id}</td>
+        <td>${todo.title}</td>
+        <td>${todo.completed ? "Completed" : "Not Completed"}</td>
+      </tr>`
+    )).join('');
+    document.getElementById('tbody').innerHTML = todoList;
+  }
+
   return (
     <div>
       <table className="table-auto w-full">
@@ -21,9 +29,7 @@ const Todos = () => {
             <th className="px-4 py-2">Status</th>
           </tr>
         </thead>
-        <tbody>
-          {todoList}
-        </tbody>
+        <tbody id='tbody'></tbody>
       </table>
 
     </div>

@@ -1,5 +1,5 @@
 import express from 'express';
-import type { Request, Response, NextFunction, RequestHandler } from 'express';
+import type { Request, Response } from 'express';
 import type { payloadTodo, controllerReturn } from '../utils/interfaces.js';
 
 import {
@@ -8,17 +8,18 @@ import {
 
 const router = express.Router();
 
-router.get('/', (req: Request, res: Response) => {
-    let taskresponse: payloadTodo[] = getTodoList(req.body);
+router.get('/', async (req: Request, res: Response) => {
+    let taskresponse: payloadTodo[] = await getTodoList();
+
     res.send(taskresponse)
 });
 
 router
-    .route('/todo')
+    .route('/todo/:id')
     .get(
-        (req: Request, res: Response) => {
-            let taskresponse: payloadTodo = getTodo(req.body);
-            res.send(taskresponse)
+        async (req: Request, res: Response) => {
+            let taskresponse: payloadTodo | null = await getTodo(Number(req.params.id));
+            res.send(taskresponse ?? null)
         }
     )
     .post(
@@ -26,7 +27,7 @@ router
             console.log('Hi', req.body)
             let taskresponse: controllerReturn = createTodo(req.body);
             res.send(taskresponse)
-            
+
         }
     )
     .put(

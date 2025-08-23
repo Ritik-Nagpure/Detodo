@@ -1,20 +1,7 @@
 import Todos from "../Todo/Todos"
 import Newtodo from "../Todo/Newtodo"
-import { useState, useEffect } from "react"
-
 
 const display = () => {
-  const [addtodo, setAddtodo] = useState(true)
-
-  const handleAddTodo = () => {
-    setAddtodo(!addtodo)
-  }
-
-  const submitTodo = (todo) => {
-    console.log("New Todo Submitted:", todo);
-    setAddtodo(false);
-  }
-
   return (
     <div>
       <br></br>
@@ -22,8 +9,8 @@ const display = () => {
         Daily Tasks
       </p>
       <br></br>
-      <Todos />
       {addtodo ? <Newtodo /> : null}
+      <Todos />      
       <br></br>
     </div>
   )
