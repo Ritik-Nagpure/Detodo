@@ -2,7 +2,7 @@ const Newtodo = () => {
 
   const postTodo = (tname, tstatus) => {
     console.log(tname, tstatus);
-    fetch('http://localhost:8000/todos',
+    fetch('http://localhost:8000/api/todos/todo',
       {
         method: 'POST',
         headers: {
